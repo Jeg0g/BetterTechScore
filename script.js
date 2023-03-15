@@ -10,12 +10,14 @@ class ScoreSet{
     this.btot=btot;
   }
 }
-
-const hiddens =['#div1','#div2','#div3','#div4','#div5'];
-const isHidden = [true,true,true,true,true];
+const hiddens =['#div1','#div2','#div3','#div4'];
+const isHidden = [true,true,true,true];
 $(document).ready(function(){
-  let testScore= new ScoreSet("5","testschool","./images/jones.png",["54","65","65","54","65","65","54","65","65","65","65"],["23","45","15"],"130","54","46");
-  constructRow(testScore);
+  
+  $.getJSON('./data/testdict.json', function(data) {         
+    alert(data);
+  });
+  // constructRow(testScore);
   let isInHidden=false;
   $('#scores').find('.row').click( function(){
     if ($(this).index()%2==0){
@@ -34,6 +36,8 @@ $(document).ready(function(){
 function constructRow(ss){
   const scoreTable=$('#scores')[0];
   let rownum=(parseInt(ss.rank)-1)*2;
+  hiddens.splice(ss.rank,0, '#div'+ss.rank);
+  isHidden.splice(ss.rank,0, true);
   // scoreTable.insertRow($('.rows').length);
   scoreTable.insertRow(rownum);
   let row=scoreTable.rows[rownum]
@@ -116,12 +120,19 @@ function constructRow(ss){
     scoretdb.innerHTML='<td>'+score+'</td>';
     tra.appendChild(scoretdb);
   });
-  if (ss.bscores.length<6){
+
+  if (ss.bscores.length<6 && ss.ascores.length<6){
     for (let i=0;i<6-ss.bscores.length;i++){
-      let scoretdb=document.createElement('td');
-      tra.appendChild(scoretdb);
+      let scoretd=document.createElement('td');
+      tra.appendChild(scoretd);
+    }
+  }else if (ss.ascores.length>ss.bscores.length){
+    for (let i=0;i<ss.ascores.length-ss.bscores.length;i++){
+      let scoretd=document.createElement('td');
+      tra.appendChild(scoretd);
     }
   }
+
   let scoretdb=document.createElement('td');
   scoretdb.innerHTML='<td>'+ss.btot+'</td>';
   tra.appendChild(scoretdb);
