@@ -1,0 +1,90 @@
+body{
+  font-family: Yantramanav, sans-serif;
+}
+#scores{
+  width: 100%;
+  border-spacing: 0px 5px;
+}
+#scores .school{
+  text-align: left;
+}
+#scores .row{
+  border-radius: 40px;
+  position: relative;
+  border-spacing: 10px;
+}
+#scores .row:before{
+  content: "";
+  position: absolute;
+  border-radius: 40px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px;
+}
+#scores .hiddenrow{
+  border-radius: 40px;
+  position: relative;
+  border-spacing: 10px;
+}
+#scores .hiddenrow:before{
+  content: "";
+  position: absolute;
+  border-radius: 40px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.racenums td{
+  font-size: 0.75em;
+}
+.penalty{
+  color: #f22727;
+}
+.nonpen{
+  color: #2745f2;
+}
+.subtable{
+  position: relative;
+  table-layout: fixed;
+  top: -10px;
+  border-radius: 0px 0px 20px 20px;
+  border-spacing: 0px;
+  width: 100%;
+}
+.subtable td{
+  text-align: center;
+}
+.subtable:before{
+  content: "";
+  position: absolute;
+  border-radius: 0px 0px 20px 20px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+}
+#scores td{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+#scores .rank{
+  padding-left: 20px;
+  width: 5%;
+}
+#scores .banner{
+  width: 60px;
+}
+#scores .totalscore{
+  padding-right: 20px;
+  text-align: center;
+  width: 5%;
+}
+.hiddenrow{
+  display: none;
+}
