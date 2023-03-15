@@ -10,14 +10,43 @@ class ScoreSet{
     this.btot=btot;
   }
 }
-const hiddens =['#div1','#div2','#div3','#div4'];
-const isHidden = [true,true,true,true];
+const hiddens =[];
+const isHidden = [];
 $(document).ready(function(){
-  
-  $.getJSON('./data/testdict.json', function(data) {         
-    alert(data);
+  let files;
+  $.ajax({
+    type: 'GET',
+    url: './data/files.json',
+    async: false,
+    beforeSend: (xhr) => {
+      if (xhr && xhr.overrideMimeType) {
+        xhr.overrideMimeType('application/json;charset=utf-8');
+      }
+    },
+    dataType: 'json',
+    success: (data) => {
+      console.log(data.names.slice(1,data.names.length-1).split(", "));
+      files=data.names.slice(1,data.names.length-1).split(", ");
+    }
   });
-  // constructRow(testScore);
+  files.forEach(function(filename,ind){
+    let testscore;
+    $.ajax({
+      type: 'GET',
+      url: './data/'+filename+'.json',
+      async: false,
+      beforeSend: (xhr) => {
+        if (xhr && xhr.overrideMimeType) {
+          xhr.overrideMimeType('application/json;charset=utf-8');
+        }
+      },
+      dataType: 'json',
+      success: (data) => {
+        testscore = new ScoreSet(data.rank,data.name,data.imgpath,JSON.parse(data.ascores),JSON.parse(data.bscores),data.totscore,data.atot,data.btot);
+      }
+    });
+    constructRow(testscore);
+  });
   let isInHidden=false;
   $('#scores').find('.row').click( function(){
     if ($(this).index()%2==0){
@@ -150,6 +179,14 @@ function constructRow(ss){
     rtd.innerHTML='<td>R'+(i+1)+'</td>';
     trr.appendChild(rtd);
   }
+  if (Math.max(ss.ascores.length,ss.bscores.length)<6){
+    for (let i=0;i<6-Math.max(ss.ascores.length,ss.bscores.length);i++){
+      rtd = document.createElement('td');
+      rtd.innerHTML='<td></td>';
+      trr.appendChild(rtd);
+    }
+  }
+
   rtd=document.createElement('td');
   rtd.innerHTML='<td>Tot</td>';
   trr.appendChild(rtd);
