@@ -2,7 +2,7 @@
     "rank": "2",
     "name": "Latin",
     "imgpath": "./images/latin.png",
-    "ascores": "[12,34,15,6,2,3,34]",
+    "ascores": "[12,RDG,15,6,2,3,34]",
     "bscores": "[124,7,54,3,2,34]",
     "totscore": "23",
     "atot": "7",

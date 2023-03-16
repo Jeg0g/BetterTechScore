@@ -12,6 +12,8 @@ class ScoreSet{
 }
 const hiddens =[];
 const isHidden = [];
+const penalties=["OCS","DSQ"]
+const nonpens=["RDG","BKD"]
 $(document).ready(function(){
   let files;
   $.ajax({
@@ -25,7 +27,6 @@ $(document).ready(function(){
     },
     dataType: 'json',
     success: (data) => {
-      console.log(data.names.slice(1,data.names.length-1).split(", "));
       files=data.names.slice(1,data.names.length-1).split(", ");
     }
   });
@@ -42,12 +43,11 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: (data) => {
-        testscore = new ScoreSet(data.rank,data.name,data.imgpath,JSON.parse(data.ascores),JSON.parse(data.bscores),data.totscore,data.atot,data.btot);
+        testscore = new ScoreSet(data.rank,data.name,data.imgpath,data.ascores.slice(1,data.ascores.length-1).split(","),data.bscores.slice(1,data.bscores.length-1).split(","),data.totscore,data.atot,data.btot);
       }
     });
     constructRow(testscore);
   });
-  let isInHidden=false;
   $('#scores').find('.row').click( function(){
     if ($(this).index()%2==0){
       var index = Math.floor($(this).index()/2);
@@ -120,6 +120,11 @@ function constructRow(ss){
   ss.ascores.forEach((score,ind) =>{
     let scoretd=document.createElement('td');
     scoretd.innerHTML='<td>'+score+'</td>';
+    if (penalties.includes(score)){
+      scoretd.classList.add("penalty")
+    }else if (nonpens.includes(score)){
+      scoretd.classList.add("nonpen")
+    }
     tra.appendChild(scoretd);
   });
   if (ss.ascores.length<6 && ss.bscores.length<6){

@@ -1,4 +1,13 @@
 import json
+# import requests
+# from bs4 import BeautifulSoup
+
+# URL = "https://scores.hssailing.org/f22/central-great-lakes-acc-qualifier/full-scores/"
+# page = requests.get(URL)
+
+# soup = BeautifulSoup(page.content, "html.parser")
+
+# print(soup.find_all("div",class_="divA"))
 
 files={"names":"[BonesBollegeBep, Latin]"}
 
@@ -11,7 +20,7 @@ BonesBollegeBep={
     "rank":"1",
     "name":"Bones Bollege BeP",
     "imgpath":"./images/jones.png",
-    "ascores":"[12,34,15,6,2,3,34]",
+    "ascores":"[12,OCS,15,6,2,3,34]",
     "bscores":"[124,324,145,3,5,7,54,3,2,34]",
     "totscore":"534",
     "atot":"575",
@@ -26,7 +35,7 @@ Latin={
     "rank":"2",
     "name":"Latin",
     "imgpath":"./images/latin.png",
-    "ascores":"[12,34,15,6,2,3,34]",
+    "ascores":"[12,RDG,15,6,2,3,34]",
     "bscores":"[124,7,54,3,2,34]",
     "totscore":"23",
     "atot":"7",
