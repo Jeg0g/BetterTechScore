@@ -1,13 +1,46 @@
 import json
-# import requests
-# from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
 
-# URL = "https://scores.hssailing.org/f22/central-great-lakes-acc-qualifier/full-scores/"
-# page = requests.get(URL)
+URL = "https://scores.hssailing.org/f22/central-great-lakes-acc-qualifier/full-scores/"
+page = requests.get(URL)
 
-# soup = BeautifulSoup(page.content, "html.parser")
+soup = BeautifulSoup(page.content, "html.parser")
 
-# print(soup.find_all("div",class_="divA"))
+divaS = soup.find_all("tr",class_="divA")
+names=[]
+for a in divaS:
+    names.append(a.find("a").text)
+ascores=[]
+for i,tr in enumerate(divaS):
+    td = tr.find_all("td", class_="right")
+    ascores.append([])
+    for j in td:
+        ascores[i].append(j.text)
+
+
+
+bscores=[]
+divbS = soup.find_all("tr",class_="divB")
+for i,tr in enumerate(divbS):
+    td = tr.find_all("td", class_="right")
+    bscores.append([])
+    for j in td:
+        bscores[i].append(j.text)
+
+
+atot=[ascores[i][-1] for i in range(len(ascores))]
+btot=[bscores[i][-1] for i in range(len(bscores))]
+ascores=ascores[:len(ascores)-1]
+bscores=bscores[:len(bscores)-1]
+
+ascores = str(ascores).replace("'","")
+bscores = str(bscores).replace("'","")
+
+print(ascores)
+print(bscores)
+print(atot)
+print(btot)
 
 files={"names":"[BonesBollegeBep, Latin]"}
 
