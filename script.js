@@ -12,7 +12,7 @@ class ScoreSet{
 }
 const hiddens =[];
 const isHidden = [];
-const penalties=["OCS","DSQ","DNF"]
+const penalties=["OCS","DSQ","DNF","DNS"]
 const nonpens=["RDG","BKD"]
 $(document).ready(function(){
   let files;
@@ -27,11 +27,10 @@ $(document).ready(function(){
     },
     dataType: 'json',
     success: (data) => {
-      files=data.names.slice(1,data.names.length-1).split(", ");
+      files=data.names.slice(1,data.names.length-1).split(",");
     }
   });
   files.forEach(function(filename,ind){
-    console.log(filename)
     let testscore;
     $.ajax({
       type: 'GET',
@@ -141,6 +140,7 @@ function constructRow(ss){
   }
   let scoretd=document.createElement('td');
   scoretd.innerHTML='<td>'+ss.atot+'</td>';
+  scoretd.classList.add("boo");
   tra.appendChild(scoretd);
 
   tra=document.createElement('tr');
@@ -175,6 +175,7 @@ function constructRow(ss){
 
   let scoretdb=document.createElement('td');
   scoretdb.innerHTML='<td>'+ss.btot+'</td>';
+  scoretdb.classList.add("boo");
   tra.appendChild(scoretdb);
 
   let trr = document.createElement('tr');

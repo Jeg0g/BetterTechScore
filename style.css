@@ -45,7 +45,7 @@ body{
   color: #f22727;
 }
 .nonpen{
-  color: #2745f2;
+  color: #29c936;
 }
 .subtable{
   position: relative;
@@ -87,4 +87,7 @@ body{
 }
 .hiddenrow{
   display: none;
+}
+.boo{
+  color: #2745f2;
 }

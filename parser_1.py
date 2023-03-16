@@ -2,7 +2,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://scores.hssailing.org/f22/2022-atlantic-coast/full-scores/"
+URL = "https://scores.hssailing.org/f22/kick-off-classic/full-scores/"
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
@@ -35,14 +35,11 @@ for i,tr in enumerate(divbS):
 atot=[ascores[i][-1] for i in range(len(ascores))]
 btot=[bscores[i][-1] for i in range(len(bscores))]
 for i,scores in enumerate(ascores):
-    ascores[i]=str(scores[:len(ascores)-1]).replace("'","").replace(" ","")
+    ascores[i]=str(scores[:len(scores)-1]).replace("'","").replace(" ","")
 for i,scores in enumerate(bscores):
-    bscores[i]=str(scores[:len(bscores)-1]).replace("'","").replace(" ","")
-print(names)
-namesstr=str(names).replace("'","").replace('"',"")
-print(namesstr)
-files={"names":f"{namesstr}"}
-
+    bscores[i]=str(scores[:len(scores)-1]).replace("'","").replace(" ","")
+namesstr=str(names).replace("'","").replace('"',"").replace(" ","")
+files={"names":namesstr}
 json_object=json.dumps(files, indent=4)
 
 with open("./data/files.json",'w') as outfile:
@@ -60,6 +57,6 @@ for i,name in enumerate(names):
         "btot":f"{btot[i]}"
         }
     json_object=json.dumps(d, indent=4)
-
-    with open(f"./data/{name}.json",'w') as outfile:
+    namestr=name.replace("'","").replace('"',"").replace(" ","")
+    with open(f'./data/{namestr}.json','w') as outfile:
         outfile.write(json_object)
