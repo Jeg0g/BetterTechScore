@@ -12,7 +12,7 @@ class ScoreSet{
 }
 const hiddens =[];
 const isHidden = [];
-const penalties=["OCS","DSQ"]
+const penalties=["OCS","DSQ","DNF"]
 const nonpens=["RDG","BKD"]
 $(document).ready(function(){
   let files;
@@ -31,6 +31,7 @@ $(document).ready(function(){
     }
   });
   files.forEach(function(filename,ind){
+    console.log(filename)
     let testscore;
     $.ajax({
       type: 'GET',
@@ -121,9 +122,9 @@ function constructRow(ss){
     let scoretd=document.createElement('td');
     scoretd.innerHTML='<td>'+score+'</td>';
     if (penalties.includes(score)){
-      scoretd.classList.add("penalty")
+      scoretd.classList.add("penalty");
     }else if (nonpens.includes(score)){
-      scoretd.classList.add("nonpen")
+      scoretd.classList.add("nonpen");
     }
     tra.appendChild(scoretd);
   });
@@ -152,6 +153,11 @@ function constructRow(ss){
   ss.bscores.forEach((score,ind) =>{
     let scoretdb=document.createElement('td');
     scoretdb.innerHTML='<td>'+score+'</td>';
+    if (penalties.includes(score)){
+      scoretdb.classList.add("penalty");
+    }else if (nonpens.includes(score)){
+      scoretdb.classList.add("nonpen");
+    }
     tra.appendChild(scoretdb);
   });
 
