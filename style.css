@@ -3,36 +3,39 @@ body{
 }
 #scores{
   width: 100%;
-  border-spacing: 0px 5px;
+  border-spacing: 0px 0.4em;
 }
 #scores .school{
   text-align: left;
 }
 #scores .row{
-  border-radius: 40px;
+  border-radius: 2em;
   position: relative;
-  border-spacing: 10px;
+  border-spacing: 0.5em;
+  height: 4em;
 }
 #scores .row:before{
   content: "";
   position: absolute;
-  border-radius: 40px;
+  height: 4em;
+  border-radius: 2em;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 12px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0em 1.2em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0em 1.2em;
 }
 #scores .hiddenrow{
-  border-radius: 40px;
+  border-radius: 2em;
   position: relative;
-  border-spacing: 10px;
+  border-spacing: 0.5em;
 }
 #scores .hiddenrow:before{
   content: "";
   position: absolute;
-  border-radius: 40px;
+  border-radius: 2em;
   top: 0;
   bottom: 0;
   left: 0;
@@ -50,8 +53,8 @@ body{
 .subtable{
   position: relative;
   table-layout: fixed;
-  top: -10px;
-  border-radius: 0px 0px 20px 20px;
+  top: -14px;
+  border-radius: 0px 0px 1em 1em;
   border-spacing: 0px;
   width: 100%;
 }
@@ -61,27 +64,28 @@ body{
 .subtable:before{
   content: "";
   position: absolute;
-  border-radius: 0px 0px 20px 20px;
+  border-radius: 0px 0px 1em 1em;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: -1;
-  box-shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0.4em 1.2em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.05) 0px 0.4em 1.2em;
 }
 #scores td{
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
 }
 #scores .rank{
-  padding-left: 20px;
+  padding-left: 1.5em;
   width: 5%;
 }
 #scores .banner{
   width: 60px;
 }
 #scores .totalscore{
-  padding-right: 20px;
+  padding-right: 1.5em;
   text-align: center;
   width: 5%;
 }
