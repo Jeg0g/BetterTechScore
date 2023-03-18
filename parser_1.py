@@ -2,7 +2,7 @@ import json
 import requests
 from bs4 import BeautifulSoup
 
-URL = "https://scores.hssailing.org/f22/kick-off-classic/full-scores/"
+URL = "https://scores.hssailing.org/f22/central-great-lakes-acc-qualifier/full-scores/"
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
