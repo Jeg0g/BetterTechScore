@@ -19,7 +19,7 @@ $(document).ready(function(){
   let files;
   $.ajax({
     type: 'GET',
-    url: './data/files.json',
+    url: '/staticFiles/data/files.json',
     async: false,
     beforeSend: (xhr) => {
       if (xhr && xhr.overrideMimeType) {
@@ -35,7 +35,7 @@ $(document).ready(function(){
     let testscore;
     $.ajax({
       type: 'GET',
-      url: './data/'+filename+'.json',
+      url: '/staticFiles/data/'+filename+'.json',
       async: false,
       beforeSend: (xhr) => {
         if (xhr && xhr.overrideMimeType) {

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Better Techscore</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yantramanav">
+    <link rel="stylesheet" href="/staticFiles/normalize.css">
+    <link rel="stylesheet" href="/staticFiles/style.css">
+    <script defer src="/staticFiles/jquery-3.6.4.min.js"></script>
+    <script defer src="/staticFiles/fullscores.js"></script>
+  </head>
+  <body>
+    <nav>
+      <a href="{{url_for('index')}}" id="fullscores">Full Scores</a>
+      <a href="index.html" id="sailors">Sailors</a>
+      <a href="{{url_for('diva')}}" id="adivision">A Division</a>
+      <a href="{{url_for('divb')}}" id="bdivision">B Division</a>
+    </nav>
+    <h1>Full Scores</h1>
+    <div id="scores"></div>
+  </body>
+</html>

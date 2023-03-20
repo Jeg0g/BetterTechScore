@@ -6,7 +6,7 @@ class ScoreSet{
     this.ascores=ascores;
     this.bscores=bscores;
     this.totscore=totscore;
-    this.btot=btot;
+    this.atot=atot;
     this.btot=btot;
   }
 }
@@ -14,12 +14,11 @@ const hiddens =[];
 const isHidden = [];
 const penalties=["OCS","DSQ","DNF","DNS"]
 const nonpens=["RDG","BKD"]
-const scoreSets=[]
 $(document).ready(function(){
   let files;
   $.ajax({
     type: 'GET',
-    url: './data/files.json',
+    url: '/staticFiles/data/files.json',
     async: false,
     beforeSend: (xhr) => {
       if (xhr && xhr.overrideMimeType) {
@@ -35,7 +34,7 @@ $(document).ready(function(){
     let testscore;
     $.ajax({
       type: 'GET',
-      url: './data/'+filename+'.json',
+      url: '/staticFiles/data/'+filename+'.json',
       async: false,
       beforeSend: (xhr) => {
         if (xhr && xhr.overrideMimeType) {
@@ -44,22 +43,16 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: (data) => {
-        testscore = new ScoreSet(data.rank,data.name,data.imgpath,data.ascores.slice(1,data.ascores.length-1).split(","),data.bscores.slice(1,data.bscores.length-1).split(","),data.totscore,data.btot,data.btot);
+        testscore = new ScoreSet(data.rank,data.name,data.imgpath,data.ascores.slice(1,data.ascores.length-1).split(","),data.bscores.slice(1,data.bscores.length-1).split(","),data.totscore,data.atot,data.btot);
       }
     });
-    scoreSets.push(testscore);
+    constructRow(testscore);
   });
-  sortedScoreSets=scoreSets.sort(function(a, b){return a.btot - b.btot});
-  sortedScoreSets.forEach(function(ss,ind){
-    ss.rank=ind+1;
-  })
-  sortedScoreSets.forEach(function(ss,ind){
-    constructRow(ss);
-  })
   $('#scores').find('.row').click( function(){
     let rank=$(this).find('.rank')[0];
     console.log(rank.innerHTML);
     let d = rank.innerHTML;
+
     if (isHidden[d]){
       $('#scores').find('#div'+d)[0].classList.add("open");
       isHidden[d]=false;
@@ -94,14 +87,13 @@ function constructRow(ss){
   row.appendChild(td);
 
   td = document.createElement('td');
-  td.innerHTML = '<td>'+ss.btot+'</td>';
+  td.innerHTML = '<td>'+ss.totscore+'</td>';
   td.classList.add("totalscore");
   row.appendChild(td);
 
   hrow = document.createElement('div')
   scoreTable.appendChild(hrow);
   hrow.classList.add("hiddenrow");
-  hrow.classList.add("AB");
   hrow.id="div"+ss.rank;
 
   td=document.createElement('td');
@@ -121,10 +113,10 @@ function constructRow(ss){
   tra.classList.add('subrow');
   tbl.appendChild(tra);
   let th=document.createElement('th');
-  th.innerHTML='<th>B</th>';
+  th.innerHTML='<th>A</th>';
   tra.appendChild(th);
 
-  ss.bscores.forEach((score,ind) =>{
+  ss.ascores.forEach((score,ind) =>{
     let scoretd=document.createElement('td');
     scoretd.innerHTML='<td>'+score+'</td>';
     if (penalties.includes(score)){
@@ -146,9 +138,44 @@ function constructRow(ss){
     }
   }
   let scoretd=document.createElement('td');
-  scoretd.innerHTML='<td>'+ss.btot+'</td>';
+  scoretd.innerHTML='<td>'+ss.atot+'</td>';
   scoretd.classList.add("boo");
   tra.appendChild(scoretd);
+
+  tra=document.createElement('tr');
+  tra.classList.add('subrow');
+  tbl.appendChild(tra);
+  th=document.createElement('th');
+  th.innerHTML='<th>B</th>';
+  tra.appendChild(th);
+
+  ss.bscores.forEach((score,ind) =>{
+    let scoretdb=document.createElement('td');
+    scoretdb.innerHTML='<td>'+score+'</td>';
+    if (penalties.includes(score)){
+      scoretdb.classList.add("penalty");
+    }else if (nonpens.includes(score)){
+      scoretdb.classList.add("nonpen");
+    }
+    tra.appendChild(scoretdb);
+  });
+
+  if (ss.bscores.length<6 && ss.ascores.length<6){
+    for (let i=0;i<6-ss.bscores.length;i++){
+      let scoretd=document.createElement('td');
+      tra.appendChild(scoretd);
+    }
+  }else if (ss.ascores.length>ss.bscores.length){
+    for (let i=0;i<ss.ascores.length-ss.bscores.length;i++){
+      let scoretd=document.createElement('td');
+      tra.appendChild(scoretd);
+    }
+  }
+
+  let scoretdb=document.createElement('td');
+  scoretdb.innerHTML='<td>'+ss.btot+'</td>';
+  scoretdb.classList.add("boo");
+  tra.appendChild(scoretdb);
 
   let trr = document.createElement('tr');
   trr.classList.add('racenums');
