@@ -1,10 +1,10 @@
 {
-    "rank": "5",
+    "rank": "3",
     "name": "U Chicago Laboratory",
     "imgpath": "https://scores.hssailing.org/inc/img/schools/2063-40.png",
-    "ascores": "[1,1,8,5,7,6,5,7,9,11,6]",
-    "bscores": "[5,7,4,1,DSQ,4,2,6,9,10,7]",
-    "totscore": "133",
-    "atot": "66",
-    "btot": "67"
+    "ascores": "[1,2,3,3,5]",
+    "bscores": "[4,3,5,12,10]",
+    "totscore": "48",
+    "atot": "14",
+    "btot": "34"
 }

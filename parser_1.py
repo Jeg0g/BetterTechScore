@@ -1,8 +1,10 @@
 import json
 import requests
+import glob
+import os
 from bs4 import BeautifulSoup
 
-URL = "https://scores.hssailing.org/f22/central-great-lakes-acc-qualifier/full-scores/"
+URL = "https://scores.hssailing.org/f22/kick-off-classic/full-scores/"
 page = requests.get(URL)
 
 soup = BeautifulSoup(page.content, "html.parser")
@@ -41,6 +43,11 @@ for i,scores in enumerate(bscores):
 namesstr=str(names).replace("'","").replace('"',"").replace(" ","")
 files={"names":namesstr}
 json_object=json.dumps(files, indent=4)
+
+dir = './data'
+filelist = glob.glob(os.path.join(dir, "*"))
+for f in filelist:
+    os.remove(f)
 
 with open("./data/files.json",'w') as outfile:
     outfile.write(json_object)

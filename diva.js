@@ -49,7 +49,7 @@ $(document).ready(function(){
     });
     scoreSets.push(testscore);
   });
-  sortedScoreSets=sortSS(scoreSets);
+  sortedScoreSets=scoreSets.sort(function(a, b){return a.atot - b.atot});
   sortedScoreSets.forEach(function(ss,ind){
     ss.rank=ind+1;
   })
@@ -57,46 +57,26 @@ $(document).ready(function(){
     constructRow(ss);
   })
   $('#scores').find('.row').click( function(){
-    if ($(this).index()%2==0){
-      var index = Math.floor($(this).index()/2);
-      var d = $(hiddens[index]);
-      if (isHidden[index]){
-        d[0].style.display='table-row';
-        isHidden[index]=false;
-      }else{
-        d[0].style.display='none';
-        isHidden[index]=true;
-      }
+    let rank=$(this).find('.rank')[0];
+    console.log(rank.innerHTML);
+    let d = rank.innerHTML;
+
+    if (isHidden[d]){
+      $('#scores').find('#div'+d)[0].classList.add("open");
+      isHidden[d]=false;
+    }else{
+      $('#scores').find('#div'+d)[0].classList.remove("open");
+      isHidden[d]=true;
     }
   });
 });
-function mergess(left, right) {
-    let sortedArr = []
-    while (left.length && right.length) {
-      if (left[0].atot < right[0].atot) {
-        sortedArr.push(left.shift())
-      } else {
-        sortedArr.push(right.shift())
-      }
-    }
-    return [...sortedArr, ...left, ...right]
-  }
-function sortSS(arr){
-    if (arr.length <= 1) return arr
-    let mid = Math.floor(arr.length / 2)
-
-    let left = sortSS(arr.slice(0, mid))
-    let right = sortSS(arr.slice(mid))
-    return mergess(left, right)
-}
 function constructRow(ss){
   const scoreTable=$('#scores')[0];
-  let rownum=(parseInt(ss.rank)-1)*2;
   hiddens.splice(ss.rank,0, '#div'+ss.rank);
   isHidden.splice(ss.rank,0, true);
   // scoreTable.insertRow($('.rows').length);
-  scoreTable.insertRow(rownum);
-  let row=scoreTable.rows[rownum]
+  let row =document.createElement('div');
+  scoreTable.appendChild(row);
   row.classList.add("row");
 
   let td = document.createElement('td');
@@ -119,9 +99,10 @@ function constructRow(ss){
   td.classList.add("totalscore");
   row.appendChild(td);
 
-  scoreTable.insertRow(rownum+1);
-  let hrow=scoreTable.rows[rownum+1]
+  hrow = document.createElement('div')
+  scoreTable.appendChild(hrow);
   hrow.classList.add("hiddenrow");
+  hrow.classList.add("AB");
   hrow.id="div"+ss.rank;
 
   td=document.createElement('td');
