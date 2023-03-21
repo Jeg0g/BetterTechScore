@@ -47,11 +47,10 @@ class Parser_1:
         files={"names":namesstr}
         json_object=json.dumps(files, indent=4)
 
-        dir = './data'
+        dir = 'staticFiles/data'
         filelist = glob.glob(os.path.join(dir, "*"))
         for f in filelist:
             os.remove(f)
-
         with open("staticFiles/data/files.json",'w') as outfile:
             outfile.write(json_object)
 
