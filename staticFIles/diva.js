@@ -1,5 +1,5 @@
 class ScoreSet{
-  constructor(rank,name,imgpath,ascores,bscores,totscore,atot,btot){
+  constructor(rank,name,imgpath,ascores,bscores,totscore,atot,btot,arank,brank,mascot){
     this.rank=rank;
     this.name=name;
     this.imgpath=imgpath;
@@ -8,11 +8,14 @@ class ScoreSet{
     this.totscore=totscore;
     this.atot=atot;
     this.btot=btot;
+    this.arank=arank;
+    this.brank=brank;
+    this.mascot=mascot;
   }
 }
 const hiddens =[];
 const isHidden = [];
-const penalties=["OCS","DSQ","DNF","DNS"]
+const penalties=["OCS","DSQ","DNF","DNS","RAF","MRP"]
 const nonpens=["RDG","BKD"]
 const scoreSets=[]
 $(document).ready(function(){
@@ -44,12 +47,12 @@ $(document).ready(function(){
       },
       dataType: 'json',
       success: (data) => {
-        testscore = new ScoreSet(data.rank,data.name,data.imgpath,data.ascores.slice(1,data.ascores.length-1).split(","),data.bscores.slice(1,data.bscores.length-1).split(","),data.totscore,data.atot,data.btot);
+        testscore = new ScoreSet(data.rank,data.name,data.imgpath,data.ascores.slice(1,data.ascores.length-1).split(","),data.bscores.slice(1,data.bscores.length-1).split(","),data.totscore,data.atot,data.btot,data.arank,data.brank,data.mascot);
       }
     });
     scoreSets.push(testscore);
   });
-  sortedScoreSets=scoreSets.sort(function(a, b){return a.atot - b.atot});
+  sortedScoreSets=scoreSets.sort(function(a, b){return a.arank - b.arank});
   sortedScoreSets.forEach(function(ss,ind){
     ss.rank=ind+1;
   })
@@ -92,6 +95,11 @@ function constructRow(ss){
   td = document.createElement('td');
   td.innerHTML = '<td>'+ss.name+'</td>';
   td.classList.add("school");
+  row.appendChild(td);
+
+  td = document.createElement('td');
+  td.innerHTML = '<td>'+ss.mascot+'</td>';
+  td.classList.add("mascot");
   row.appendChild(td);
 
   td = document.createElement('td');
@@ -160,9 +168,15 @@ function constructRow(ss){
   trr.appendChild(rtd);
 
   for (let i=0;i<Math.max(ss.ascores.length,ss.bscores.length);i++){
-    rtd = document.createElement('td');
-    rtd.innerHTML='<td>R'+(i+1)+'</td>';
-    trr.appendChild(rtd);
+    if (ss.ascores[i]!="MRP"){
+      rtd = document.createElement('td');
+      rtd.innerHTML='<td>R'+(i+1)+'</td>';
+      trr.appendChild(rtd);
+    }else{
+      rtd = document.createElement('td');
+      rtd.innerHTML='<td></td>';
+      trr.appendChild(rtd);
+    }
   }
   if (Math.max(ss.ascores.length,ss.bscores.length)<6){
     for (let i=0;i<6-Math.max(ss.ascores.length,ss.bscores.length);i++){

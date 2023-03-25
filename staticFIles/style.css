@@ -56,9 +56,14 @@ td{
 #scores{
   width: 100%;
   border-spacing: 0px 0.4em;
-}
+}    
 #scores .school{
   text-align: left;
+}
+#scores .mascot{
+  text-align: right;
+  font-size: small;
+  color: gray;
 }
 #scores .row{
   border-radius: 2em;
