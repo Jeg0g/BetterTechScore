@@ -1,13 +1,13 @@
 {
-    "rank": "11",
+    "rank": "12",
     "name": "Jones College Prep",
     "imgpath": "https://scores.hssailing.org/inc/img/schools/9868-40.png",
-    "ascores": "[2,2,6,2,RAF,12]",
-    "bscores": "[14,12,16,12,14,13]",
-    "totscore": "123",
-    "atot": "42",
-    "btot": "81",
-    "arank": "6",
-    "brank": "14",
+    "ascores": "[14,8,15,13,11,13,10,12]",
+    "bscores": "[12,8,12,8,5,12,9,10]",
+    "totscore": "172",
+    "atot": "96",
+    "btot": "76",
+    "arank": "12",
+    "brank": "9",
     "mascot": "Mixed"
 }
