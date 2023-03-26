@@ -20,8 +20,12 @@ def parseURL(URL):
 
     divaS = soup.find_all("tr",class_="divA")
     names=[]
+    links=[]
     for a in divaS:
-        names.append(a.find("a").text)
+        aa=a.find("a")
+        names.append(aa.text)
+        links.append(aa['href'])
+
     ascores=[]
     for i,tr in enumerate(divaS):
         td = tr.find_all("td", class_="right")
@@ -38,6 +42,9 @@ def parseURL(URL):
         bscores.append([])
         for j in td:
             bscores[i].append(j.text)
+
+    for i,l in enumerate(links):
+        links[i]=l+mascots[i]
 
     namemasts=[]
     for n,m in zip(names,mascots):
@@ -56,15 +63,21 @@ def parseURL(URL):
 
     schoolnames=soup2.find_all("td",class_="schoolname")
     newnames=[]
+    newlinks=[]
     for i in schoolnames:
         newnames.append(i.text)
+        newlinks.append(i.find('a')['href'])
     teamnames=soup2.find_all("td",class_="teamname")
     newteams=[]
     for i in teamnames:
         newteams.append(i.text)
-    newnamemasts=[]
-    for n,m in zip(newnames,newteams):
-        newnamemasts.append((n+m).replace("'","").replace('"',"").replace(" ",""))
+
+    for i,l in enumerate(newlinks):
+        newlinks[i]=l+newteams[i]
+
+    # newnamemasts=[]
+    # for n,m in zip(newnames,newteams):
+    #     newnamemasts.append((n+m).replace("'","").replace('"',"").replace(" ",""))
     rankcells=soup2.find_all("td",class_="rank-cell")
 
     files={"names":namesstr}
@@ -78,13 +91,13 @@ def parseURL(URL):
         outfile.write(json_object)
 
     
-    alphanames=namemasts.copy()
-    alphanames.sort()
-    corresIndex=[]
-    for n in namemasts:
-        corresIndex.append(alphanames.index(n))
+    # alphalinks=links.copy()
+    # links.sort()
+    # corresIndex=[]
+    # for n in newlinks:
+    #     corresIndex.append(alphalinks.index(n))
 
-    #FUCKING SHEBOYGAN
+    # #FUCKING SHEBOYGAN
 
     for i,name in enumerate(names):
         d={
@@ -96,8 +109,8 @@ def parseURL(URL):
             "totscore":f"{int(atot[i])+int(btot[i])}",
             "atot":f"{atot[i]}",
             "btot":f"{btot[i]}",
-            "arank":rankcells[2*corresIndex[i]].text,
-            "brank":rankcells[2*corresIndex[i]+1].text,
+            "arank":rankcells[2*newlinks.index(links[i])].text,
+            "brank":rankcells[2*newlinks.index(links[i])+1].text,
             "mascot":mascots[i]
             }
         json_object=json.dumps(d, indent=4)
@@ -106,4 +119,4 @@ def parseURL(URL):
             outfile.write(json_object)
 
     
-parseURL("https://scores.hssailing.org/f22/2022-fall-scramble/")
+parseURL("https://scores.hssailing.org/s23/missa-ice-breaker-chicago-yacht-club/")
