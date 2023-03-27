@@ -75,9 +75,6 @@ def parseURL(URL):
     for i,l in enumerate(newlinks):
         newlinks[i]=l+newteams[i]
 
-    # newnamemasts=[]
-    # for n,m in zip(newnames,newteams):
-    #     newnamemasts.append((n+m).replace("'","").replace('"',"").replace(" ",""))
     rankcells=soup2.find_all("td",class_="rank-cell")
 
     files={"names":namesstr}
@@ -89,15 +86,6 @@ def parseURL(URL):
         os.remove(f)
     with open("staticFiles/data/files.json",'w') as outfile:
         outfile.write(json_object)
-
-    
-    # alphalinks=links.copy()
-    # links.sort()
-    # corresIndex=[]
-    # for n in newlinks:
-    #     corresIndex.append(alphalinks.index(n))
-
-    # #FUCKING SHEBOYGAN
 
     for i,name in enumerate(names):
         d={
@@ -118,5 +106,4 @@ def parseURL(URL):
         with open(f'staticFiles/data/{namestr}.json','w') as outfile:
             outfile.write(json_object)
 
-    
 parseURL("https://scores.hssailing.org/s23/missa-ice-breaker-chicago-yacht-club/")

@@ -172,3 +172,42 @@ td{
 .boo{
   color: #2745f2;
 }
+#sails{
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+
+#sails .row{
+  border-radius: 2em;
+  position: relative;
+  border-spacing: 0.5em;
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+}
+#sails .row:before{
+  content: "";
+  position: absolute;
+  margin-bottom: 0.25em;
+  margin-top: 0.25em;
+  border-radius: 2em;
+  margin-left: 0.5%;
+  margin-right: 0.5%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 0em 1.2em;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.1) 0px 0em 1.2em;
+}
+.sailortable{
+  position: relative;
+  table-layout: fixed;
+  border-radius: 0px 0px 1em 1em;
+  border-spacing: 0px;
+  width: 94%;
+  margin-bottom:-1em;
+  margin-right: 0;
+}

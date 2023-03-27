@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sailors</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Yantramanav">
+    <link rel="stylesheet" href="/staticFiles/normalize.css">
+    <link rel="stylesheet" href="/staticFiles/style.css">
+</head>
+    <body>
+        <nav>
+            <a href="{{url_for('index')}}" id="fullscores">Full Scores</a>
+            <a href="{{url_for('sailors')}}" id="sailors">Sailors</a>
+            <a href="{{url_for('diva')}}" id="adivision">A Division</a>
+            <a href="{{url_for('divb')}}" id="bdivision">B Division</a>
+        </nav>
+        <h1>Sailors</h1>
+        <div id="sails">
+            <div class="row">
+                <td>Jones</td>
+                <td><table class="sailortable">
+                    <tr>
+                        <td>div/pos</td>
+                        <td>Skipper</td>
+                        <td>Crew</td>
+                    </tr>
+                    <tr>
+                        <th>A</th>
+                        <td>Jake Weinstein '23</td>
+                        <td>Damian Amoruso '26</td>
+                    </tr>
+                    <tr>
+                        <th>B</th>
+                        <td>Peter Stewart '24</td>
+                        <td>Betsy Finley '23</td>
+                    </tr>
+                </table></td>
+            </div>
+        </div>
+    </body>
+</html>

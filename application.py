@@ -21,5 +21,10 @@ def divb():
     parseURL(URL)
     return render_template('divb.html')
 
+@application.route('/sailors')
+def sailors():
+    parseURL(URL)
+    return render_template('sailors.html')
+
 if __name__=='__main__':
     application.run(debug = True)
