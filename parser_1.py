@@ -14,7 +14,7 @@ def parseURL(URL):
     for img in images:
         imgg=img.find('img')
         if imgg is not None:
-            imageurls.append("https://scores.hssailing.org"+imgg['src'])
+            imageurls.append("https://scores.collegesailing.org"+imgg['src'])
         else:
             imageurls.append('staticFiles/noimg.png')
 
@@ -76,7 +76,6 @@ def parseURL(URL):
         newlinks[i]=l+newteams[i]
 
     rankcells=soup2.find_all("td",class_="rank-cell")
-
     files={"names":namesstr}
     json_object=json.dumps(files, indent=4)
 
@@ -106,4 +105,4 @@ def parseURL(URL):
         with open(f'staticFiles/data/{namestr}.json','w') as outfile:
             outfile.write(json_object)
 
-parseURL("https://scores.hssailing.org/s23/missa-ice-breaker-chicago-yacht-club/")
+parseURL("https://scores.collegesailing.org/s23/mcsa-open-fleet-racing/")
