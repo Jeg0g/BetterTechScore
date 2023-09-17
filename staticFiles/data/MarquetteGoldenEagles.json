@@ -1,13 +1,13 @@
 {
-    "rank": "10",
+    "rank": "9",
     "name": "Marquette",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/MRQ-40.png",
-    "ascores": "[11,10,6,10,7,4,5,10,10]",
-    "bscores": "[1,10,6,9,8,11,9,7,8]",
-    "totscore": "142",
-    "atot": "73",
-    "btot": "69",
+    "ascores": "[9,12,11,3,11,9]",
+    "bscores": "[10,10,7,7,10]",
+    "totscore": "99",
+    "atot": "55",
+    "btot": "44",
     "arank": "11",
-    "brank": "9",
+    "brank": "10",
     "mascot": "Golden Eagles"
 }

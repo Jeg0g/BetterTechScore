@@ -1,13 +1,13 @@
 {
-    "rank": "6",
+    "rank": "10",
     "name": "Northwestern",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/NWU-40.png",
-    "ascores": "[4,DSQ,9,4,8,6,10,4,5]",
-    "bscores": "[5,4,4,2,9,8,4,3,11]",
-    "totscore": "112",
-    "atot": "62",
-    "btot": "50",
-    "arank": "8",
-    "brank": "5",
+    "ascores": "[7,3,7,10,9,10]",
+    "bscores": "[14,15,8,11,7]",
+    "totscore": "101",
+    "atot": "46",
+    "btot": "55",
+    "arank": "7",
+    "brank": "11",
     "mascot": "Wildcats"
 }

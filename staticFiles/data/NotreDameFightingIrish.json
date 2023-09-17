@@ -1,13 +1,13 @@
 {
-    "rank": "3",
+    "rank": "16",
     "name": "Notre Dame",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/ND-40.png",
-    "ascores": "[2,2,5,5,9,7,11,8,4]",
-    "bscores": "[7,8,5,4,2,4,5,5,1]",
-    "totscore": "94",
-    "atot": "53",
-    "btot": "41",
-    "arank": "4",
-    "brank": "3",
+    "ascores": "[17,14,14,13,14,12]",
+    "bscores": "[17,17,12,16,17]",
+    "totscore": "163",
+    "atot": "84",
+    "btot": "79",
+    "arank": "14",
+    "brank": "17",
     "mascot": "Fighting Irish"
 }

@@ -1,13 +1,13 @@
 {
-    "rank": "2",
+    "rank": "5",
     "name": "Michigan",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/MICH-40.png",
-    "ascores": "[3,3,4,3,4,1,7,2,3]",
-    "bscores": "[4,1,DSQ,DSQ,7,2,1,9,7]",
-    "totscore": "85",
-    "atot": "30",
-    "btot": "55",
-    "arank": "2",
-    "brank": "7",
+    "ascores": "[5,4,2,1,6,3]",
+    "bscores": "[11,13,3,9,5]",
+    "totscore": "62",
+    "atot": "21",
+    "btot": "41",
+    "arank": "3",
+    "brank": "8",
     "mascot": "Wolverines"
 }

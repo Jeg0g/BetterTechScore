@@ -1,13 +1,13 @@
 {
-    "rank": "4",
+    "rank": "6",
     "name": "Purdue",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/PUR-40.png",
-    "ascores": "[10,5,10,9,11,8,1,1,6]",
-    "bscores": "[2,2,2,7,3,6,6,4,2]",
-    "totscore": "95",
-    "atot": "61",
-    "btot": "34",
-    "arank": "7",
-    "brank": "2",
+    "ascores": "[6,5,9,6,8,5]",
+    "bscores": "[3,4,5,OCS,6]",
+    "totscore": "75",
+    "atot": "39",
+    "btot": "36",
+    "arank": "5",
+    "brank": "6",
     "mascot": "Boilermakers"
 }

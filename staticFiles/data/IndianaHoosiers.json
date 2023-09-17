@@ -1,13 +1,13 @@
 {
-    "rank": "7",
+    "rank": "8",
     "name": "Indiana",
     "imgpath": "https://scores.collegesailing.org/inc/img/schools/IU-40.png",
-    "ascores": "[1,9,7,8,3,10,6,7,DSQ]",
-    "bscores": "[9,3,3,10,4,3,7,8,4]",
-    "totscore": "114",
-    "atot": "63",
-    "btot": "51",
-    "arank": "9",
-    "brank": "6",
+    "ascores": "[14,10,8,7,10,6]",
+    "bscores": "[8,8,6,8,9]",
+    "totscore": "94",
+    "atot": "55",
+    "btot": "39",
+    "arank": "10",
+    "brank": "7",
     "mascot": "Hoosiers"
 }

@@ -3,7 +3,7 @@ from parser_1 import parseURL
 
 application = Flask(__name__, template_folder='templateFiles', static_folder='staticFiles')
 
-URL="https://scores.collegesailing.org/s23/mcsa-open-fleet-racing/"
+URL="https://scores.collegesailing.org/f23/fall-fury/"
 
 
 @application.route('/')
